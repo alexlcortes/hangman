@@ -10,7 +10,7 @@
 				<div>
 					<h2>Guess the word:</h2>
 					<p id='right'></p>
-					<p><span id='ramin'>12</span> guesses remaining</p>
+					<p><span id='remain'>12</span> guesses remaining</p>
 					<p id='wrong'></p>
 				</div>
 			</div>
@@ -22,7 +22,25 @@
 			}
 		</style>
 
-		<script type=
+		<script type='text/javascript'>
+			var words = ['daredevil', 'punisher', 'electra', 'kingpin', 'the hand'];
+
+			var game = {
+				guessed: [],
+				left: 12,
+				start: function() {
+					this.complete = false;
+					this.word = words[Math.floor(Math.random() * words.length)];
+					this.$right = document.getElementById('right');
+					this.$wrong = document.getElementById('wrong');
+					this.$remain = document.getElementById('remain');
+
+					this.$right.innerHTML = '_'.repeat(this.word.length);
+				},
+				guess: function(Letter) {
+					
+				}
+			}
 
 
 
