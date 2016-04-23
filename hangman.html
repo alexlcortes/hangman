@@ -38,7 +38,7 @@
 					this.$right.innerHTML = '_'.repeat(this.word.length);
 				},
 				guess: function(letter) {
-					if (this.left > 0 && this.complete != true) {
+					if (this.left > 0 && this.complete !== true) {
 						if (this.word.indexOf(letter) > -1 || this.guessed.indexOf(letter) > -1) {
 							this.right(letter);
 						} else {
