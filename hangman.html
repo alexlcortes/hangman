@@ -38,9 +38,41 @@
 					this.$right.innerHTML = '_'.repeat(this.word.length);
 				},
 				guess: function(Letter) {
-					
+					if (this.left > 0 && this.complete != true) {
+						if (this.word.indexOf(letter) > -1 || this.guessed.indexOf(letter) > -1) {
+							this.right(letter);
+						} else {
+							this.wrong(letter);
+						}
+					}
+				},
+				right: function(letter) {
+					for (var i = 0; i < this.word.length; i++) {
+						if (this.word[i] == letter) {
+							var word = this.$right.innerHTML.split('');
+							word[i] = letter;
+							this.$right.innerHTML = word.join('');
+						}
+					}
+
+					if (this.$right.innerHTML.indexOf('_') < 0) {
+						alert('you win!');
+						this.complete = true;
+					}
+				},
+				wrong: function(letter) {
+					this.guessed.push(letter);
+					this.$wrong.innterHTML += ' ' + letter;
+					this.left--;
+
+					this.$remain.innterHTML = this.left;
+
+					if (this.left < 1) {
+						alert('you lose! '+ this.word);
+						this.complete = true;
+					}
 				}
-			}
+			};
 
 
 
